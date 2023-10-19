@@ -90,7 +90,7 @@ const Home = () => {
   }, [pageNo, query]);
 
   useEffect(() => {
-    if (observer.current) observer?.current?.disconnect();
+    if (observer?.current) observer?.current?.disconnect();
 
     observer.current = new IntersectionObserver((entries) => {
       if (entries[0]?.isIntersecting && hasMore) {
@@ -99,8 +99,10 @@ const Home = () => {
       }
     });
 
-    if (allPosts.length > 0) {
-      observer?.current?.observe(document.querySelector("#bottom")!);
+    const bottomElement = document.querySelector("#bottom");
+
+    if (bottomElement) {
+      observer.current.observe(bottomElement);
     }
 
     return () => {
