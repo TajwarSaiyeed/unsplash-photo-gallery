@@ -62,26 +62,30 @@ const SinglePhotoPage = async ({
       {(photoData?.user?.twitter_username ||
         photoData?.user?.instagram_username) && (
         <div className="mb-5 w-full gap-x-3 max-w-[900px] p-5 border rounded-lg flex items-center relative">
-          <a
-            href={`https://www.instagram.com/${photoData?.user?.instagram_username}`}
-            className="flex items-center"
-            target={"_blank"}
-          >
-            <BsInstagram />
-            <span className="italic text-xs text-slate-500 font-bold">
-              /{photoData?.user?.instagram_username}
-            </span>
-          </a>
-          <a
-            className="flex items-center"
-            target={"_blank"}
-            href={`https://twitter.com/${photoData?.user?.twitter_username}`}
-          >
-            <BsTwitter />
-            <span className="italic text-xs text-slate-500 font-bold">
-              /{photoData?.user?.twitter_username}
-            </span>
-          </a>
+          {photoData?.user?.instagram_username && (
+            <a
+              href={`https://www.instagram.com/${photoData?.user?.instagram_username}`}
+              className="flex items-center"
+              target={"_blank"}
+            >
+              <BsInstagram />
+              <span className="italic text-xs text-slate-500 font-bold">
+                /{photoData?.user?.instagram_username}
+              </span>
+            </a>
+          )}
+          {photoData?.user?.twitter_username && (
+            <a
+              className="flex items-center"
+              target={"_blank"}
+              href={`https://twitter.com/${photoData?.user?.twitter_username}`}
+            >
+              <BsTwitter />
+              <span className="italic text-xs text-slate-500 font-bold">
+                /{photoData?.user?.twitter_username}
+              </span>
+            </a>
+          )}
         </div>
       )}
       <div className="flex-wrap w-[900px] relative p-2 pt-4 border rounded-lg flex items-center gap-2 justify-start">
